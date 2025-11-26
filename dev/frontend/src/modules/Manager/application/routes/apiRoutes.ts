@@ -1,6 +1,5 @@
 
-
-
-export const ManagerApiRoutes ={
-Manager :()=>"/Manager",
-} 
+export const ManagerApiRoutes = {
+  Manager: () => "/Manager",
+  findAllManager: () => "/Manager/findAllManager",
+};

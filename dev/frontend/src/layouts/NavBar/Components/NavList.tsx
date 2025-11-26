@@ -2,6 +2,7 @@ import { FC, HTMLAttributes } from "react";
 import { NavRoutes } from "../Routes/NavRoutes";
 import NAvItem from "./NavItem";
 import { twMerge } from "tailwind-merge";
+import { nanoid } from "@reduxjs/toolkit";
 
 export type NavItemType = {
   id: string;
@@ -13,7 +14,7 @@ const NavList: FC<HTMLAttributes<HTMLUListElement>> = ({ ...props }) => {
   return (
     <ul {...props} className={twMerge(` text-white ${props.className} `)}>
       {navTable.map((item) => (
-        <NAvItem item={item} />
+        <NAvItem item={item} key={nanoid()} />
       ))}
     </ul>
   );
