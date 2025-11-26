@@ -24,7 +24,7 @@ REFRESH_TOKEN_COOKIE_NAME ="refreshToken"
 
 # --- Configuration Serveur et Client ---
 # Port sur lequel le serveur Express écoutera
-PORT=3005
+PORT=5000
 # Nombre de cycles de hachage pour BCRYPT
 BCRIPT_SALT_ROUNDS=10
 # URL du client/frontend pour la politique CORS et les redirections
