@@ -9,13 +9,9 @@ export type NavItemType = {
   label: string;
 };
 
-
 const NavList: FC<HTMLAttributes<HTMLUListElement>> = ({ ...props }) => {
   return (
-    <ul
-      {...props}
-      className={twMerge(`flex items-center gap-5 ${props.className} `)}
-    >
+    <ul {...props} className={twMerge(` text-white ${props.className} `)}>
       {navTable.map((item) => (
         <NAvItem item={item} />
       ))}
@@ -25,10 +21,25 @@ const NavList: FC<HTMLAttributes<HTMLUListElement>> = ({ ...props }) => {
 
 export default NavList;
 
-  const navTable: NavItemType[] = [
-    {
-      id: "1",
-      label: "Home",
-      link: NavRoutes.home(),
-    },
-  ];
+const navTable: NavItemType[] = [
+  {
+    id: "1",
+    label: "Dashboard",
+    link: NavRoutes.dashboard(),
+  },
+  {
+    id: "2",
+    label: "Manager",
+    link: NavRoutes.home(),
+  },
+  {
+    id: "3",
+    label: "Client",
+    link: NavRoutes.manager(),
+  },
+  {
+    id: "4",
+    label: "Assurance",
+    link: NavRoutes.(),
+  },
+];
