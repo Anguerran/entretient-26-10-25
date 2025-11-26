@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 50px;
+}
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 29.05px;
+}
+h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+h4 {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 18px;
+}
+h5 {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+p {
+  font-size: 15px;
+  font-weight: 400px;
+  line-height: 16.5px;
+}
+
+
+/* Default styles */
+h1 {
+  @apply text-[48px] font-bold leading-[50px];
+}
+h2 {
+  @apply text-[24px] font-bold leading-[29px];
+}
+h3 {
+  @apply text-[20px] font-bold leading-[24px];
+}
+h4 {
+  @apply text-[15px] font-semibold leading-[18px];
+}
+h5 {
+  @apply text-[13px] font-semibold leading-[14px];
+}
+p {
+  @apply text-[15px] font-normal leading-[16.5px];
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  h1 {
+    @apply text-[30px] font-bold leading-[30px];
+  }
+  h2 {
+    @apply text-[18px] font-bold leading-[22px];
+  }
+  h3 {
+    @apply text-[15px] font-bold leading-[19px];
+  }
+  h4 {
+    @apply text-[12px] font-semibold leading-[14px];
+  }
+  h5 {
+    @apply text-[10px] font-semibold leading-[12px];
+  }
+  p {
+    @apply text-[12px] font-normal leading-[14.5px];
+  }
+}
+
+
+
+
+progress::-webkit-progress-bar {
+  background: #b6b7bb;
+}
+progress::-webkit-progress-value {
+  background: #0f70b7;
+  border-radius: 20px;
+}
+
+

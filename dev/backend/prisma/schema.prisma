@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// -----------------------------------------------------------------
+// ENTITIES
+// -----------------------------------------------------------------
+
+model User {
+  id              String         @id @default(uuid())
+  email           String         @unique
+  firstName       String
+  profilImage     String?
+  lastName        String
+  password        String?
+  googleId        String?
+  role            String
+
+  // Relationships
+  account         Account?
+  refreshTokens   RefreshToken[]
+
+  @@map("users")
+}
+
+model Account {
+  id              String   @id @default(uuid())
+  
+  // 1:1 Relationship with User
+  user            User     @relation(fields: [userId], references: [id])
+  userId          String   @unique
+  
+  // 1:N Relationship with Session (Placeholder)
+  Session         Session[]
+}
+
+
+model RefreshToken {
+  id              String   @id @default(cuid())
+  hashedToken     String
+  expiresAt       DateTime
+  revoked         Boolean  @default(false)
+
+  // N:1 Relationship with User
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("refresh_tokens")
+}
+
+// -----------------------------------------------------------------
+// MISSING MODEL: Session (Placeholder)
+// You need to define this model for the schema to be valid, 
+// as it is referenced in the Account model.
+// -----------------------------------------------------------------
+
+model Session {
+  id              String   @id @default(uuid())
+  // Add other Session fields here (e.g., token, expiresAt, etc.)
+  
+  // N:1 Relationship with Account
+  accountId       String
+  account         Account @relation(fields: [accountId], references: [id])
+}

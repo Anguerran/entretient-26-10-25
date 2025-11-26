@@ -1,0 +1,45 @@
+
+# Fichier d'exemple de variables d'environnement.
+# Renommez ce fichier en .env et remplacez les valeurs par vos configurations réelles.
+
+# --- Base de données PostgreSQL ---
+# L'URL de connexion complète à votre base de données PostgreSQL.
+# Format: postgresql://utilisateur:mot_de_passe@hôte:port/nom_de_la_bd
+DATABASE_URL="postgresql://utilisateur:mot_de_passe@localhost:5432/nom_de_la_bd"
+
+# --- Secrets JWT (JSON Web Token) ---
+# **FORTEMENT RECOMMANDÉ** : Générez des chaînes de caractères longues, aléatoires et uniques.
+ACCESS_TOKEN_SECRET="votre_secret_tres_long_et_aleatoire_pour_access_token"
+REFRESH_TOKEN_SECRET="votre_secret_tres_long_et_aleatoire_pour_refresh_token"
+
+# --- Expiration des Tokens ---
+# Durée de validité des tokens. (ex: "15m", "1h", "30d")
+ACCESS_TOKEN_EXPIRY_MIN="15m"
+# Durée de validité du Refresh Token (en heures)
+REFRESH_TOKEN_EXPIRY_HOURS="720" # (e.g., 30 jours)
+# Durée de vie du cookie du Refresh Token (doit correspondre à REFRESH_TOKEN_EXPIRY_HOURS)
+REFRESH_TOKEN_COOKIE_EXPIRY_HOURS="720"
+# Nom du cookie utilisé pour stocker le Refresh Token
+REFRESH_TOKEN_COOKIE_NAME ="refreshToken"
+
+# --- Configuration Serveur et Client ---
+# Port sur lequel le serveur Express écoutera
+PORT=3005
+# Nombre de cycles de hachage pour BCRYPT
+BCRIPT_SALT_ROUNDS=10
+# URL du client/frontend pour la politique CORS et les redirections
+CLIENT_URL="http://localhost:3000"
+# Environnement d'exécution (development, production, test)
+NODE_ENV=development
+
+# --- Google OAuth ---
+# Clés d'identification pour l'intégration Google Sign-In/OAuth
+GOOGLE_CLIENT_ID="VOTRE_ID_CLIENT_GOOGLE"
+GOOGLE_CLIENT_SECRET="VOTRE_SECRET_CLIENT_GOOGLE"
+# Chemin de l'URL de rappel (callback) sur votre serveur
+GOOGLE_CALLBACK_URL="/auth/google/callback"
+
+# --- Redis DataBase ---
+# Configuration de la connexion à l'instance Redis
+REDIS_HOST=localhost # Généralement 'localhost' si Redis n'est pas conteneurisé, ou 'redis' si dans un Docker network
+REDIS_PORT=6379

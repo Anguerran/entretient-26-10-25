@@ -1,0 +1,40 @@
+
+export const ACCESS_SECRET = process.env.ACCESS_TOKEN_SECRET! || "loreme";
+export const APP_PORT = process.env.PORT || 3005;
+export const REFRESH_SECRET = process.env.REFRESH_TOKEN_SECRET! || "lorem";
+export const ACCESS_EXPIRY = parseInt(process.env.ACCESS_TOKEN_EXPIRY || "15");
+
+export const ACCESS_EXPIRY_MIN = process.env.ACCESS_TOKEN_EXPIRY_MIN;
+export const REFRESH_EXPIRY_HOURS = process.env.REFRESH_TOKEN_COOKIE_EXPIRY_HOURS;
+export const BCRIPT_SALT_ROUNDS = parseInt(
+  process.env.BCRYPT_SALT_ROUNDS || "10",
+  10
+);
+export const REFRESH_TOKEN_COOKIE_EXPIRY_HOURS =
+  process.env.REFRESH_TOKEN_COOKIE_EXPIRY_HOURS;
+console.log(
+  "REFRESH_TOKEN_COOKIE_EXPIRY_HOURS",
+  REFRESH_TOKEN_COOKIE_EXPIRY_HOURS
+);
+export const REFRESH_TOKEN_COOKIE_NAME =
+  process.env.REFRESH_TOKEN_COOKIE_NAME || "refresh_token";
+
+export const GOOGLE_CALLBACK_URL = process.env.GOOGLE_CALLBACK_URL;
+export const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+export const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+
+export const Global = {
+  ACCESS_SECRET,
+  REFRESH_SECRET,
+  ACCESS_EXPIRY_MIN,
+  REFRESH_EXPIRY_HOURS,
+  BCRIPT_SALT_ROUNDS,
+  REFRESH_TOKEN_COOKIE_EXPIRY_HOURS,
+  REFRESH_TOKEN_COOKIE_NAME,
+  APP_PORT,
+  GOOGLE: {
+    GOOGLE_CLIENT_SECRET,
+    GOOGLE_CLIENT_ID,
+    GOOGLE_CALLBACK_URL,
+  },
+};
