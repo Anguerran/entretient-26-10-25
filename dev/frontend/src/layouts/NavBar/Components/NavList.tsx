@@ -40,6 +40,6 @@ const navTable: NavItemType[] = [
   {
     id: "4",
     label: "Assurance",
-    link: NavRoutes.(),
+    link: NavRoutes.assurance(),
   },
 ];

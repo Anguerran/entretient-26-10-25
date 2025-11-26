@@ -12,6 +12,10 @@ const Header = () => {
       <div className="flex  ">
         <div className="w-40 relative flex justify-center bg-blue-primary items-center flex-col  h-screen border-r border-gray-400">
           <h2 className="text-white italic absolute top-14 ">INTIA</h2>
+          <h4 className="text-white italic absolute bottom-5 ">
+            Se deconnecter
+          </h4>
+
           <NavList />
         </div>
         <div className=" max-w-[1240px] min-h-screen h-full pt-28 px-5 mx-auto ">

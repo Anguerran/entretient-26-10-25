@@ -7,10 +7,10 @@ const interceptor = new UpdateManagerByIdInterceptor(mockManagerRepo);
 
 describe("updateManagerById Interception", () => {
   it("Should  UpdateManagerById with valid data", async () => {
-    const ManagerData: UpdateManagerByIdCommand = {}
+    const ManagerData: UpdateManagerByIdCommand = { id: "" };
+
     const result = await interceptor.execute(ManagerData);
     expect(result).toEqual(mockManager);
     expect(mockManagerRepo.updateManagerById).toHaveBeenCalledWith(ManagerData);
   });
 });
- 
