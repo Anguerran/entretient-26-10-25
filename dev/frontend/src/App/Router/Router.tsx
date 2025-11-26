@@ -13,6 +13,5 @@ export const CreateAppRouter = (store: AppStore) => {
       redirectUrl: HomeRoutes.home(),
     }),
     ...NavBarRouter(store),
-
   ]);
 };

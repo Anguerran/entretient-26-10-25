@@ -18,7 +18,7 @@ const Header = () => {
 
           <NavList />
         </div>
-        <div className=" max-w-[1240px] min-h-screen h-full pt-28 px-5 mx-auto ">
+        <div className=" max-w-[1240px] w-[70%] min-h-screen h-full pt-28 px-5 mx-auto ">
           <Outlet />
         </div>
       </div>

@@ -30,12 +30,12 @@ const navTable: NavItemType[] = [
   {
     id: "2",
     label: "Manager",
-    link: NavRoutes.home(),
+    link: NavRoutes.manager(),
   },
   {
     id: "3",
     label: "Client",
-    link: NavRoutes.manager(),
+    link: NavRoutes.client(),
   },
   {
     id: "4",

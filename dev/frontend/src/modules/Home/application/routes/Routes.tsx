@@ -1,5 +1,5 @@
 
 export const HomeRoutes = {
   base:()=>'/',
-  home: () => "home",
+  home: () => "dashboard",
 };
