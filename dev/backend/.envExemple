@@ -5,7 +5,7 @@
 # --- Base de données PostgreSQL ---
 # L'URL de connexion complète à votre base de données PostgreSQL.
 # Format: postgresql://utilisateur:mot_de_passe@hôte:port/nom_de_la_bd
-DATABASE_URL="postgresql://utilisateur:mot_de_passe@localhost:5432/nom_de_la_bd"
+DATABASE_URL="file:./dev.db"
 
 # --- Secrets JWT (JSON Web Token) ---
 # **FORTEMENT RECOMMANDÉ** : Générez des chaînes de caractères longues, aléatoires et uniques.

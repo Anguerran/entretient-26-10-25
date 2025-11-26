@@ -25,7 +25,7 @@ private updateManagerByIdInterceptor = new UpdateManagerByIdInterceptor(this.rep
 
   async createManager(req: Request, res: Response, next: NextFunction) {
     try {
-      const data = req.params as CreateManagerCommand;
+      const data = req.body as CreateManagerCommand;
       const result = await this.createManagerInterceptor.execute(data);
       res.json(result).status(200);
     } catch (error) {
@@ -58,7 +58,7 @@ private updateManagerByIdInterceptor = new UpdateManagerByIdInterceptor(this.rep
 
   async updateManagerById(req: Request, res: Response, next: NextFunction) {
     try {
-      const data = req.params as UpdateManagerByIdCommand;
+      const data = req.body as UpdateManagerByIdCommand;
       const result = await this.updateManagerByIdInterceptor.execute(data);
       res.json(result).status(200);
     } catch (error) {

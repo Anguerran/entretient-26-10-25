@@ -1,12 +1,8 @@
 import { ManagerRoutes } from "./src/modules/Manager/presentation/router/ManagerRoutes";
 import { ManagerRouter } from "./src/modules/Manager/presentation/router/ManagerRouter";
-import { DirectionRoutes } from "./src/modules/Direction/presentation/router/DirectionRoutes";
-import { DirectionRouter } from "./src/modules/Direction/presentation/router/DirectionRouter";
-import { ClientRoutes } from "./src/modules/Client/presentation/router/ClientRoutes";
-import { ClientRouter } from "./src/modules/Client/presentation/router/ClientRouter";
 // import { AuthRoutes } from "./src/modules/Auth/presentation/router/AuthRoutes";
 // import { authRouter } from "./src/modules/Auth/presentation/router/AuthRouter";
-import 'dotenv/config'
+import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
@@ -29,14 +25,8 @@ app.use(bodyParser.json());
 app.use(cookieParser()); // <= IMPORTANT pour lire req.cookies
 app.use(passport.initialize());
 
-// app.use(AuthRoutes.base, authRouter);
-app.use(ClientRoutes.base,ClientRouter)
-app.use(DirectionRoutes.base,DirectionRouter)
-app.use(ManagerRoutes.base,ManagerRouter)
+app.use(ManagerRoutes.base, ManagerRouter);
 //do-no-delete-me-please
-
-
-
 
 // the comment above help locate where to place the router
 app.use(

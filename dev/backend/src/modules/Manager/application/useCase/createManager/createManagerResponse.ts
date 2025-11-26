@@ -1,5 +1,3 @@
-import { ManagerModel } from '../../../model/ManagerModel';
+import { User } from "@prisma/client";
 
-
-export type CreateManagerResponse = ManagerModel
-
+export type CreateManagerResponse = User;

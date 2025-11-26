@@ -1,6 +1,8 @@
+import { User } from "@prisma/client";
 
-import { Audit } from "../../../shared/models/Audit";
+export interface ManagerModel extends User {
+  id:string
 
-export interface ManagerModel extends Audit {
-    
 }
+  
+

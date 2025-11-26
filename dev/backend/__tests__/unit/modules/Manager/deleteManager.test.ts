@@ -7,7 +7,7 @@ const interceptor = new DeleteManagerInterceptor(mockManagerRepo);
 
 describe("deleteManager Interception", () => {
   it("Should  DeleteManager with valid data", async () => {
-    const ManagerData: DeleteManagerCommand = {}
+    const ManagerData: DeleteManagerCommand = {id:"managerid"}
     const result = await interceptor.execute(ManagerData);
     expect(result).toEqual(mockManager);
     expect(mockManagerRepo.deleteManager).toHaveBeenCalledWith(ManagerData);

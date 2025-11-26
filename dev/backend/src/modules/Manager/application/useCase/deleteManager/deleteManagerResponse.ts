@@ -1,5 +1,3 @@
-import { ManagerModel } from '../../../model/ManagerModel';
+import { User } from "@prisma/client";
 
-
-export type DeleteManagerResponse = ManagerModel
-
+export type DeleteManagerResponse = User;

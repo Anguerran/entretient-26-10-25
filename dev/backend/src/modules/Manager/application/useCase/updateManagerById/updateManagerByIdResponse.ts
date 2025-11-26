@@ -1,5 +1,5 @@
-import { ManagerModel } from '../../../model/ManagerModel';
+import { User } from '@prisma/client';
 
 
-export type UpdateManagerByIdResponse = ManagerModel
+export type UpdateManagerByIdResponse = User
 

@@ -1,69 +1,96 @@
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
-// -----------------------------------------------------------------
-// ENTITIES
-// -----------------------------------------------------------------
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+  CLIENT
+}
 
 model User {
-  id              String         @id @default(uuid())
-  email           String         @unique
+  id              String   @id @default(cuid())
+  email           String   @unique
+  
   firstName       String
-  profilImage     String?
   lastName        String
-  password        String?
+  profilImage     String?
+  passwordHash    String?
   googleId        String?
-  role            String
+  
+  role            Role
 
-  // Relationships
+  // Correction: Suppression des arguments fields/references ici. C'est l'autre côté de la relation qui les définit.
+  // La relation manager:branchManaged doit avoir un nom explicite pour éviter l'ambiguïté.
+  branchManaged   Branch?  @relation("BranchManager") 
+  branchManagedId String?  @unique
+
+  customerProfile Customer?
+
   account         Account?
   refreshTokens   RefreshToken[]
+}
 
-  @@map("users")
+model Branch {
+  id               String    @id @default(cuid())
+  name             String
+  address          String
+  department       String
+
+  // Correction: Ajout du nom explicite et maintien des arguments fields/references ici.
+  manager          User?     @relation("BranchManager", fields: [managerId], references: [id])
+  managerId        String?   @unique
+
+  customers        Customer[]
+}
+
+model Customer {
+  id              String   @id @default(cuid())
+  lastName        String
+  firstName       String
+  dateOfBirth     DateTime
+  address         String
+  phone           String
+
+  branch          Branch   @relation(fields: [branchId], references: [id])
+  branchId        String
+
+  user            User     @relation(fields: [userId], references: [id])
+  userId          String   @unique
+
+  policies        InsurancePolicy[]
+}
+
+model InsurancePolicy {
+  id              String   @id @default(cuid())
+  policyNumber    String   @unique
+  policyType      String
+  startDate       DateTime
+  endDate         DateTime
+  annualPremium   Float
+
+  client          Customer @relation(fields: [clientId], references: [id])
+  clientId        String
 }
 
 model Account {
-  id              String   @id @default(uuid())
-  
-  // 1:1 Relationship with User
-  user            User     @relation(fields: [userId], references: [id])
-  userId          String   @unique
-  
-  // 1:N Relationship with Session (Placeholder)
-  Session         Session[]
+  id      String    @id @default(cuid())
+  user    User      @relation(fields: [userId], references: [id])
+  userId  String    @unique
 }
 
 
 model RefreshToken {
-  id              String   @id @default(cuid())
-  hashedToken     String
-  expiresAt       DateTime
-  revoked         Boolean  @default(false)
+  id            String    @id @default(cuid())
+  hashedToken   String
+  userId        String
+  expiresAt     DateTime
+  revoked       Boolean   @default(false)
 
-  // N:1 Relationship with User
-  userId          String
-  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
-  @@map("refresh_tokens")
-}
-
-// -----------------------------------------------------------------
-// MISSING MODEL: Session (Placeholder)
-// You need to define this model for the schema to be valid, 
-// as it is referenced in the Account model.
-// -----------------------------------------------------------------
-
-model Session {
-  id              String   @id @default(uuid())
-  // Add other Session fields here (e.g., token, expiresAt, etc.)
-  
-  // N:1 Relationship with Account
-  accountId       String
-  account         Account @relation(fields: [accountId], references: [id])
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
